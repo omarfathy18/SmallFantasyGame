@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Home</title>
+</head>
+<body>
+
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="/">
+      <img src="{{ url_for('static', filename = 'logo.png') }}" width="40" height="40" alt="">
+    </a>
+
+    <form enctype="multipart/form-data" action="/login" method="POST">
+      <button class="btn btn-success" type="submit" id="button-addon2">Log in</button>
+    </form>
+
+    <form enctype="multipart/form-data" action="/register" method="POST">
+      <button class="btn btn-danger" type="submit" id="button-addon3">Register</button>
+    </form>
+
+    <form enctype="multipart/form-data" action="/about" method="POST">
+      <button class="btn btn-info" type="submit" id="button-addon4">About</button>
+    </form>
+
+  </nav>
+
+  <div class="container" style="padding-top:30px;">
+    <h1 class="text-center" style="color:grey">WELCOME TO FANTASY</h1>
+    <br>
+    <h3 style="color:darkblue">Egyptian table 22/23</h3>
+
+    <table class="table">
+      <thead class="thread-dark">
+
+        <tr align="center">
+        <th scope="col">Position</th>
+        <th scope="col">Club</th>
+        <th scope="col">Played</th>
+        <th scope="col" style="color:green">Win</th>
+        <th scope="col" style="color:grey;">Draw</th>
+        <th scope="col" style="color:red;">Lose</th>
+        <th scope="col">Points</th>
+        <th scope="col">GD</th>
+        </tr>
+
+      </thead>
+      <tbody>
+
+        {% for club in egyptian_table %}
+        <tr align="center">
+        <th scope="row">{{ club['position'] }}</th>
+        <td>{{ club['club'] }}</td>
+        <td>{{ club['played'] }}</td>
+        <td style="color:green;">{{ club['win'] }}</td>
+        <td style="color:grey;">{{ club['draw'] }}</td>
+        <td style="color:red;">{{ club['lose'] }}</td>
+        <td>{{ club['points'] }}</td>
+        <td>{{ club['gd'] }}</td>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+
+    <form enctype="multipart/form-data" action="/egyptian_table" method="POST">
+      <button class="btn btn-warning" type="submit" id="button-addon5">see all table</button>
+    </form>
+
+    <br>
+    <h3 style="color:darkgreen">Matches</h3>
+
+    <table width="60%">
+      <tbody>
+
+        {% for match in egyptian_matches %}
+        <tr align="center">
+        <th>{{ match['team1'] }}</th>
+        <td align="right">{{ match['day'] }}</td>
+        <td align="center">{{ match['date'] }}</td>
+        <td align="left">{{ match['hour'] }}</td>
+        <th>{{ match['team2'] }}</th>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+
+    <br>
+    <form enctype="multipart/form-data" action="/egyptian_matches" method="POST">
+      <button class="btn btn-warning" type="submit" id="button-addon6">see all fixtures</button>
+    </form>
+    <br>
+
+    <form enctype="multipart/form-data" action="/egyptian_results" method="POST">
+      <button class="btn btn-warning" type="submit" id="button-addon7">see all results</button>
+    </form>
+    <br>
+    <hr color="red">
+    <br>
+    <h3 style="color:darkblue">Premier table 22/23</h3>
+
+    <table class="table">
+      <thead class="thread-dark">
+
+        <tr align="center">
+        <th scope="col">Position</th>
+        <th scope="col">Club</th>
+        <th scope="col">Played</th>
+        <th scope="col" style="color:green">Win</th>
+        <th scope="col" style="color:grey;">Draw</th>
+        <th scope="col" style="color:red;">Lose</th>
+        <th scope="col">Points</th>
+        <th scope="col">GD</th>
+        </tr>
+
+      </thead>
+      <tbody>
+
+        {% for club in premier_table %}
+        <tr align="center">
+        <th scope="row">{{ club['position'] }}</th>
+        <td>{{ club['club'] }}</td>
+        <td>{{ club['played'] }}</td>
+        <td style="color:green;">{{ club['win'] }}</td>
+        <td style="color:grey;">{{ club['draw'] }}</td>
+        <td style="color:red;">{{ club['lose'] }}</td>
+        <td>{{ club['points'] }}</td>
+        <td>{{ club['gd'] }}</td>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+
+    <form enctype="multipart/form-data" action="/premier_table" method="POST">
+      <button class="btn btn-warning" type="submit" id="button-addon8">see all table</button>
+    </form>
+
+    <br>
+    <h3 style="color:darkgreen">Matches</h3>
+
+    <table width="60%">
+      <tbody>
+
+        {% for match in premier_matches %}
+        <tr align="center">
+        <th>{{ match['team1'] }}</th>
+        <td align="right">{{ match['day'] }}</td>
+        <td align="center">{{ match['date'] }}</td>
+        <td align="left">{{ match['hour'] }}</td>
+        <th>{{ match['team2'] }}</th>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+
+    <br>
+    <form enctype="multipart/form-data" action="/premier_matches" method="POST">
+      <button class="btn btn-warning" type="submit" id="button-addon9">see all fixtures</button>
+    </form>
+    <br>
+
+    <form enctype="multipart/form-data" action="/premier_results" method="POST">
+      <button class="btn btn-warning" type="submit" id="button-addon10">see all results</button>
+    </form>
+  </div>
+  <br>
+<h6><strong>*Powered by fathy*</strong></h6>
+</body>
+</html>
